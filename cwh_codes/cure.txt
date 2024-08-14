@@ -1,0 +1,7 @@
+common errors:
+1.  error: ';' expected
+2.  error: not a statement
+3.  error: '.class' expected
+4.  error: not a statement
+
+soln : check the data types , spaces are given correctly or not...

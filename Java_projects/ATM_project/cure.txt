@@ -1,0 +1,10 @@
+ATM machine in Java
+
+1. Valiadet the user through ATM Number and Pin..
+2. User should abble tp perform below opeartions.
+        1. Check Available balance
+        2. WithDraw Amount
+        3. Deposit Amount
+        4. View Mini Statement
+        5. Exit
+

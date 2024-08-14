@@ -1,0 +1,10 @@
+println : firstly is print the value respected and then print space..
+system.out.format()
+system.out.print()
+system.out.println()
+are same ...
+
+strings :
+equals()
+equalsIgnoreCase()
+string.length()
