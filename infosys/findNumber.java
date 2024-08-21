@@ -34,17 +34,13 @@ class findNumber {
         int num1 = 10;
         int num2 = 30;
 
-        int[] numbers = findNumbers(num1, num2);
-        if (numbers[0] == 0) {
+        List<Integer> numbers = findNumbers(num1, num2);
+        if (numbers.isEmpty()) {
             System.out.println("There is no such number!");
         } else {
-            for (int index = 0; index <= numbers.length - 1; index++) {
-                if (numbers[index] == 0) {
-                    break;
-                }
-                System.out.println(numbers[index]);
+            for (int number : numbers) {
+                System.out.println(number);
             }
         }
-
     }
 }

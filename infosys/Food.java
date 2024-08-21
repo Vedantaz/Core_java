@@ -1,12 +1,13 @@
 import java.util.*;
+import java.util.concurrent.DelayQueue;
 
 class Orders {
     private int orderId;
-    private List<String> orderedFoods;
+    private Details[] orderedFoods;
     private double totalPrice;
     private String status;
 
-    public Orders(int orderId, List<String> orderedFoods) {
+    public Orders(int orderId, Details[] orderedFoods) {
         this.orderId = orderId;
         this.orderedFoods = orderedFoods;
         this.totalPrice = 0.0;
@@ -89,7 +90,7 @@ class Details {
 
     // Method to calculate the total price
     public double calculateTotalPrice() {
-        return quantity * unitPrice;
+        return this.quantity * this.unitPrice;
     }
 
     // Override the toString method to display food details
@@ -98,6 +99,38 @@ class Details {
         return "Food{" + "foodName='" + foodName + '\'' + ", cuisine='" + cuisine + '\''
                 + ", foodType='" + foodType + '\'' + ", quantity=" + quantity + ", unitPrice="
                 + unitPrice + ", totalPrice=" + calculateTotalPrice() + '}';
+    }
+}
+
+class Order {
+    private int orderId;
+    private static int orderIdCounter;
+    private Details[] orderedFoods;
+
+    static {
+        orderIdCounter = 101;
+    }
+
+    public Order(Details[] orderFoods) {
+        this.orderedFoods = orderFoods;
+        this.orderId = orderIdCounter++;
+    }
+
+    public int getOrderId() {
+        return orderId;
+    }
+
+    public Details[] getOrderedFoods() {
+        return orderedFoods;
+    }
+
+    // Setter for orderedFoods
+    public void setOrderedFoods(Details[] orderedFoods) {
+        this.orderedFoods = orderedFoods;
+    }
+
+    public static int getTotalNoOfOrders() {
+        return orderIdCounter - 101;
     }
 }
 
@@ -123,11 +156,16 @@ class Restaurent {
 public class Food {
     public static void main(String[] args) {
         // Creating a Food object
-        Details pizza = new Details("Pizza", "Italian", "Non-Vegetarian", 2, 12.99);
-        List<String> foods = new ArrayList<>();
+        Details pizza = new Details("Pizza", "Italian", "Non-Vegetarian", 2, 11.99);
+        Details dosa = new Details("dosa", "south indian", "Vegetarian", 3, 9.99);
+        Details[] foods = { pizza, dosa };
 
-        foods.add("Pizza");
-        foods.add("Pasta");
+        // List<String> foods = new ArrayList<>();
+        // foods.add("Pizza");
+        // foods.add("Pasta");
+
+        Order order1 = new Order(foods);
+        Order order2 = new Order(foods);
 
         // orderss ..
         Orders val = new Orders();

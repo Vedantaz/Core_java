@@ -1,4 +1,3 @@
-package classes_codes;
 
 class Customer {
     // Private member variables
@@ -41,7 +40,6 @@ class Customer {
     }
 }
 
-
 public class pri_variable {
 
     public static void main(String args[]) {
@@ -63,4 +61,3 @@ public class pri_variable {
         System.out.println("Address : " + customer.getAddress());
     }
 }
-
