@@ -1,12 +1,10 @@
 
 class Customer {
-    // Private member variables
     private String customerId;
     private String customerName;
     private long contactNumber;
     private String address;
 
-    // Public getter and setter methods
     public String getCustomerId() {
         return customerId;
     }
