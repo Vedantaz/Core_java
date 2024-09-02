@@ -10,5 +10,6 @@ public class zip_zap {
             System.out.println("Zap");
         else
             System.out.println("Zip");
+        sc.close();
     }
 }

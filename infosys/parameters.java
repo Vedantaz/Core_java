@@ -1,6 +1,3 @@
-package infosys.constructor;
-
-import java.util.*;
 
 // class Customer {
 // public String customerId;
@@ -23,7 +20,8 @@ import java.util.*;
 
 public class parameters {
     public static void main(String args[]) {
-        // Customer c1 = new Customer("C103", "Jacob", 5648394590L, "13th Street, New York");
+        // Customer c1 = new Customer("C103", "Jacob", 5648394590L, "13th Street, New
+        // York");
         // Customer c2 = new Customer();
         System.out.println("Hey");
     }
