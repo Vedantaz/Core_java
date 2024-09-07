@@ -1,14 +1,22 @@
 // see at infosys springBoard
 class Student {
     // Implement your code here
+    private String studentName;
+    private String section;
 }
 
 class UndergraduateStudent {
     // Implment your code here
+    private String studentName;
+    private int testResult;
+    private int testScore;
+
 }
 
 class GraduateStudent {
     // Implment your code here
+    private String studentName;
+    private int result;
 }
 
 public class studentAbstraction {

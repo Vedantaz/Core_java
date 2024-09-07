@@ -13,7 +13,7 @@ class Employee {
     private double salary;
 
     // Constructor to initialize employeeId and employeeName
-    public Employee(int employeeId, String employeeName) {
+    public void Employee(int employeeId, String employeeName) {
         this.employeeId = employeeId;
         this.employeeName = employeeName;
     }
@@ -61,7 +61,7 @@ class PermanentEmployee extends Employee {
 
     // Constructor to initialize PermanentEmployee specific attributes
     public PermanentEmployee(int empId, String name, double basicPay, double hra, float experience) {
-        super(empId, name);
+        super(empId, name); // extracted from the parent class
         this.basicPay = basicPay;
         this.hra = hra;
         this.experience = experience;
@@ -164,7 +164,7 @@ class ContractEmployee extends Employee {
     }
 }
 
-public class employee {
+public class EEmployee {
 
     public static void main(String[] args) {
 

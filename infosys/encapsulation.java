@@ -52,12 +52,12 @@ class Employee {
     }
 }
 
+
 public class encapsulation {
 
     public static void main(String args[]) {
 
         Employee employee = new Employee("C101", "Steve", 650, 4);
-
         employee.calculateSalary();
 
         System.out.println("Employee Details");
