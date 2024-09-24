@@ -26,9 +26,5 @@ public class calculator2 {
         int sum = calculator.sumOfDigits();
         System.out.println("Sum of digits: " + sum);
 
-        // Assign a value to the member variable num of Calculator class
-
-        // Invoke the method sumOfDigits of Calculator class and display the output
-
     }
 };

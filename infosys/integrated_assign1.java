@@ -1,17 +1,25 @@
+import java.util.Date;
+
 class Asset {
     // Implement your code here
 
-    @Override
-    public String toString() {
-        return "Asset Id: " + getAssetId() + ", Asset Name: " + getAssetName() + ", Asset Expiry: " + getAssetExpiry();
-    }
+    // Uncomment the code given below after implementing the class
+    // Do not modify the code given below
+    /*
+     * @Override
+     * public String toString() {
+     * return
+     * "Asset Id: "+getAssetId()+", Asset Name: "+getAssetName()+", Asset Expiry: "
+     * +getAssetExpiry();
+     * }
+     */
 
     private String assetId;
     private String assetName;
     private String assetExpiry;
 
-    public Asset(String assetId, String assetName, String assetExpiry) {
-        this.assetId = assetId;
+    public Asset(String assetId, String assetName, String assetExpiry) throws InvalidAssetsException {
+        setAssetId(assetId);
         this.assetName = assetName;
         this.assetExpiry = assetExpiry;
     }
@@ -21,10 +29,10 @@ class Asset {
     }
 
     public void setAssetId(String assetId) throws InvalidAssetsException {
-        if (assetId.matches("(DSK|LTP|IPH)-\\d{6}[HhLl]")) {
+        if (assetId.matches("^(DSK|LTP|IPH)-\\d{6}[HLhl]$")) {
             this.assetId = assetId;
         } else {
-            throw new InvalidAssetsException("Invalid Asset Id!");
+            throw new InvalidAssetsException("Invalid assetId");
         }
     }
 
@@ -32,8 +40,21 @@ class Asset {
         return assetName;
     }
 
+    public void setAssetName(String assetName) {
+        this.assetName = assetName;
+    }
+
     public String getAssetExpiry() {
         return assetExpiry;
+    }
+
+    public void setAssetExpiry(String assetExpiry) {
+        this.assetExpiry = assetExpiry;
+    }
+
+    @Override
+    public String toString() {
+        return "Asset Id: " + assetId + ", Asset Name: " + assetName + ", Asset Expiry: " + assetExpiry;
     }
 }
 
@@ -69,16 +90,18 @@ class Resources {
                 return 0;
         }
     }
-
 }
 
 class InvalidAssetsException extends Exception {
+    // Implement your code here
     public InvalidAssetsException(String message) {
         super(message);
     }
+
 }
 
 class InvalidExperienceException extends Exception {
+    // Implement your code here
     public InvalidExperienceException(String message) {
         super(message);
     }
@@ -87,36 +110,24 @@ class InvalidExperienceException extends Exception {
 abstract class Employee {
     // Implement your code here
 
-    // @Override
-    // public String toString() {
-    // return "Employee Id: " + getEmployeeId() + ", Employee Name: " +
-    // getEmployeeName();
-    // }
+    // Uncomment the code given below after implementing the class
+    // Do not modify the code given below
+    /*
+     * @Override
+     * public String toString() {
+     * return "Employee Id: "+getEmployeeId()+", Employee Name: "+getEmployeeName();
+     * }
+     */
 
-    private static int contractIdCounter = 10000;
-    private static int permanentIdCounter = 10000;
-    private String employeeId;
-    private String employeeName;
+    protected static int contractIdCounter = 10000;
+    protected static int permanentIdCounter = 10000;
+
+    protected String employeeId;
+    protected String employeeName;
     protected double salary;
 
     public Employee(String employeeName) {
         this.employeeName = employeeName;
-    }
-
-    public static int getContractIdCounter() {
-        return contractIdCounter;
-    }
-
-    public static void setContractIdCounter(int contractIdCounter) {
-        Employee.contractIdCounter = contractIdCounter;
-    }
-
-    public static int getPermenantIdCounter() {
-        return permanentIdCounter;
-    }
-
-    public static void setPermenantIdCounter(int permanentIdCounter) {
-        Employee.permanentIdCounter = permanentIdCounter;
     }
 
     public String getEmployeeId() {
@@ -127,22 +138,51 @@ abstract class Employee {
         return employeeName;
     }
 
+    public void setEmployeeName(String employeeName) {
+        this.employeeName = employeeName;
+    }
+
+    public double getSalary() {
+        return salary;
+    }
+
     public abstract void calculateSalary(float factor);
+
+    public static int getContractIdCounter() {
+        return contractIdCounter;
+    }
+
+    public static void setContractIdCounter(int contractIdCounter) {
+        Employee.contractIdCounter = contractIdCounter;
+    }
+
+    public static int getPermanentIdCounter() {
+        return permanentIdCounter;
+    }
+
+    public static void setPermanentIdCounter(int permanentIdCounter) {
+        Employee.permanentIdCounter = permanentIdCounter;
+    }
 }
 
 class ContractEmployee extends Employee {
     // Implement your code here
 
-    @Override
-    public String toString() {
-        return "Employee Id: " + getEmployeeId() + ", Employee Name: " + getEmployeeName() + ", Wage Per Hour: "
-                + getWagePerHour();
-    }
+    // Uncomment the code given below after implementing the class
+    // Do not modify the code given below
+    /*
+     * @Override
+     * public String toString() {
+     * return "Employee Id: "+getEmployeeId()+", Employee Name: "+getEmployeeName()
+     * +", Wage Per Hour: "+getWagePerHour();
+     * }
+     */
 
     private double wagePerHour;
 
     public ContractEmployee(String employeeName, double wagePerHour) {
         super(employeeName);
+        this.employeeId = "C" + (++contractIdCounter);
         this.wagePerHour = wagePerHour;
     }
 
@@ -152,95 +192,97 @@ class ContractEmployee extends Employee {
 
     @Override
     public void calculateSalary(float hoursWorked) {
-        double salary;
-        if (hoursWorked >= 190) {
-            salary = wagePerHour * hoursWorked;
-        } else {
-            double deficit = 190 - hoursWorked;
-            salary = (wagePerHour * hoursWorked) - (deficit * (wagePerHour / 2));
-        }
-        this.salary = Math.round(salary);
+        this.salary = wagePerHour * hoursWorked;
     }
-
-}
-
-class PermanentEmployee {
-    // Implement your code here
 
     @Override
     public String toString() {
-        return "Employee Id: " + getEmployeeId() + ", Employee Name: " + getEmployeeName() + ", Basic Pay: "
-                + getBasicPay() + ", Salary Components: " + getSalaryComponents() + ", Assets: " + getAssets();
+        return "Employee Id: " + employeeId + ", Employee Name: " + employeeName + ", Wage Per Hour: " + wagePerHour;
     }
+}
+
+class PermanentEmployee extends Employee {
+    // Implement your code here
+
+    // Uncomment the code given below after implementing the class
+    // Do not modify the code given below
+    /*
+     * @Override
+     * public String toString() {
+     * return "Employee Id: "+getEmployeeId()+", Employee Name: "+getEmployeeName()
+     * +", Basic Pay: "+getBasicPay()+", Salary Components: "+getSalaryComponents()
+     * +", Assets: "+getAssets();
+     * }
+     */
 
     private double basicPay;
     private String[] salaryComponents;
     private Asset[] assets;
+    private Date startDate;
+
+    public void setSalary(int salary) {
+        this.salary = salary;
+    }
+
+    public int getExperience() {
+        Date currentDate = new Date();
+        long millisecondsDifference = currentDate.getTime() - startDate.getTime();
+        long secondsDifference = millisecondsDifference / 1000;
+        long minutesDifference = secondsDifference / 60;
+        long hoursDifference = minutesDifference / 60;
+        long daysDifference = hoursDifference / 24;
+
+        long yearsDifference = daysDifference / 365;
+        return (int) yearsDifference;
+    }
 
     public PermanentEmployee(String employeeName, double basicPay, String[] salaryComponents, Asset[] assets) {
         super(employeeName);
+        this.employeeId = "E" + (++permanentIdCounter);
         this.basicPay = basicPay;
         this.salaryComponents = salaryComponents;
         this.assets = assets;
     }
 
-    public double calculateBonus(float experience) throws InvalidExperienceException {
-        if (experience < 2.5) {
-            throw new InvalidExperienceException("A minimum of 2.5 years is required for bonus!");
-        }
-        return experience * 1000; // Just an example
+    public double getBasicPay() {
+        return basicPay;
     }
 
-    @Override
-    public void calculateSalary(float experience) {
-        double da = 0, hra = 0, bonus = 0;
-        try {
-            bonus = calculateBonus(experience);
-        } catch (InvalidExperienceException e) {
-            bonus = 0;
-        }
-
-        for (String component : salaryComponents) {
-            String[] split = component.split("-");
-            if (split[0].equals("DA")) {
-                da = basicPay * (Double.parseDouble(split[1]) / 100);
-            } else if (split[0].equals("HRA")) {
-                hra = basicPay * (Double.parseDouble(split[1]) / 100);
-            }
-        }
-
-        this.salary = Math.round(basicPay + da + hra + bonus);
+    public String[] getSalaryComponents() {
+        return salaryComponents;
     }
 
-    public Asset[] getAssetsByDate(String lastDate) throws InvalidAssetsException {
-        // Implement asset expiry comparison logic
-        // Throw InvalidAssetsException if no assets are found
+    public Asset[] getAssets() {
         return assets;
     }
 
+    @Override
+    public void calculateSalary(float factor) {
+        this.salary = basicPay * factor;
+    }
+
+    @Override
+    public String toString() {
+        return "Employee Id: " + employeeId + ", Employee Name: " + employeeName + ", Basic Pay: " + basicPay;
+    }
 }
 
 class Admin {
     // Implement your code here
-
-    public void generateSalarySlip(Employee[] employees, float[] salaryFactor) {
+    public void generateSalarySlip(Employee[] employees, float[] factors) {
         for (int i = 0; i < employees.length; i++) {
-            employees[i].calculateSalary(salaryFactor[i]);
+            employees[i].calculateSalary(factors[i]);
         }
     }
 
-    public int generateAssetsReport(Employee[] employees, String lastDate) {
-        int totalAssets = 0;
-        for (Employee emp : employees) {
-            if (emp instanceof PermanentEmployee) {
-                try {
-                    totalAssets += ((PermanentEmployee) emp).getAssetsByDate(lastDate).length;
-                } catch (InvalidAssetsException e) {
-                    return -1;
-                }
-            }
-        }
-        return totalAssets;
+    public int generateAssetsReport(Employee[] employees, String expiryDate) {
+        // logic to generate asset report
+        return 0;
+    }
+
+    public String[] generateAssetsReport(Employee[] employees, char assetType) {
+        // logic to generate asset type report
+        return new String[] {};
     }
 }
 

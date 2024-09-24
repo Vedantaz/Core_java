@@ -18,6 +18,11 @@ class Employee {
         this.employeeName = employeeName;
     }
 
+    public Employee(int employeeId, String employeeName) {
+        this.employeeId = employeeId;
+        this.employeeName = employeeName;
+    }
+
     // Getter and Setter methods for employeeId
     public int getEmployeeId() {
         return employeeId;

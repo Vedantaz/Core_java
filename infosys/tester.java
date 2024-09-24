@@ -1,6 +1,3 @@
-
-package infosys.classes_codes;
-
 import java.util.*;
 
 class Customer {
@@ -20,7 +17,6 @@ class Customer {
     }
 
 }
-
 
 class tester {
     public static void main(String[] args) {

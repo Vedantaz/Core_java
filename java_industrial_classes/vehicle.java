@@ -16,12 +16,10 @@ public class vehicle {
     // setters
     public void setRegNo(int reg) {
         regNo = reg;
-
     };
 
     public void setModel(String mod) {
         model = mod;
-
     };
 
     // getters

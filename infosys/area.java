@@ -1,5 +1,3 @@
-package classes_codes;
-
 class Rectangle {
     private double length;
     private double breadth;
@@ -19,7 +17,6 @@ class Rectangle {
         return Math.round(perimeter * 100.0) / 100.0;
     }
 }
-
 
 public class area {
     public static void main(String[] args) {

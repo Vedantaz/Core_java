@@ -86,10 +86,9 @@ class OfficeStaff {
 
         return basicSalary + additionalPay;
     }
-
 }
 
-class Teacher {
+class Teacher extends Faculty {
     // Implement your code here
     private String qualification;
 
